@@ -12,12 +12,5 @@ defmodule MetaAds.Models.MediaFingerprint do
 
   operation(:get, "GET", "", nil, [])
 
-  operation(:create, "POST", "", nil, [
-    %{"name" => "metadata", "required" => false, "type" => "list"},
-    %{"name" => "source", "required" => false, "type" => "file"},
-    %{"name" => "title", "required" => false, "type" => "string"},
-    %{"name" => "universal_content_id", "required" => false, "type" => "string"}
-  ])
-
   finish()
 end

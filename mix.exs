@@ -4,7 +4,7 @@ defmodule MetaAds.MixProject do
   def project do
     [
       app: :meta_ads,
-      version: "0.1.0",
+      version: "0.1.1",
       # 1.20 is needed for the built-in JSON codec; -rc keeps local development usable.
       elixir: "~> 1.20.0-rc",
       start_permanent: Mix.env() == :prod,
@@ -34,7 +34,17 @@ defmodule MetaAds.MixProject do
   defp package do
     [
       maintainers: ["Ethan Huo"],
-      licenses: ["MIT"],
+      files: [
+        "lib",
+        "priv/codegen",
+        ".formatter.exs",
+        "mix.exs",
+        "README.md",
+        "docs/architecture.md",
+        "LICENSE",
+        "LICENSE.meta-codegen"
+      ],
+      licenses: ["MIT", "Facebook Platform License"],
       links: %{"GitHub" => "https://github.com/ethan-huo/meta-ads-elixir"}
     ]
   end

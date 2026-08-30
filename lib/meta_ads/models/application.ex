@@ -144,75 +144,6 @@ defmodule MetaAds.Models.Application do
     %{"name" => "uid", "required" => false, "type" => "int"}
   ])
 
-  operation(:create_activities, "POST", "activities", nil, [
-    %{
-      "name" => "add_to_messaging_customer_base_for_whatsapp",
-      "required" => false,
-      "type" => "string"
-    },
-    %{"name" => "advertiser_id", "required" => false, "type" => "string"},
-    %{"name" => "advertiser_tracking_enabled", "required" => false, "type" => "bool"},
-    %{"name" => "anon_id", "required" => false, "type" => "string"},
-    %{"name" => "app_user_id", "required" => false, "type" => "string"},
-    %{"name" => "application_tracking_enabled", "required" => false, "type" => "bool"},
-    %{"name" => "attribution", "required" => false, "type" => "string"},
-    %{"name" => "attribution_referrer", "required" => false, "type" => "string"},
-    %{"name" => "attribution_sources", "required" => false, "type" => "list<map>"},
-    %{"name" => "auto_publish", "required" => false, "type" => "bool"},
-    %{"name" => "bundle_id", "required" => false, "type" => "string"},
-    %{"name" => "bundle_short_version", "required" => false, "type" => "string"},
-    %{"name" => "bundle_version", "required" => false, "type" => "string"},
-    %{"name" => "campaign_ids", "required" => false, "type" => "string"},
-    %{"name" => "circuit_breaker_timeout_ms", "required" => false, "type" => "unsigned int"},
-    %{"name" => "click_id", "required" => false, "type" => "string"},
-    %{"name" => "consider_views", "required" => false, "type" => "bool"},
-    %{"name" => "custom_events", "required" => false, "type" => "list<Object>"},
-    %{"name" => "custom_events_file", "required" => false, "type" => "file"},
-    %{"name" => "data_processing_options", "required" => false, "type" => "list<string>"},
-    %{"name" => "data_processing_options_country", "required" => false, "type" => "unsigned int"},
-    %{"name" => "data_processing_options_state", "required" => false, "type" => "unsigned int"},
-    %{"name" => "device_token", "required" => false, "type" => "string"},
-    %{
-      "name" => "event",
-      "required" => true,
-      "type" => "applicationactivities_event_enum_param",
-      "values" => ["CUSTOM_APP_EVENTS", "DEFERRED_APP_LINK", "MOBILE_APP_INSTALL"]
-    },
-    %{"name" => "event_id", "required" => false, "type" => "string"},
-    %{"name" => "extinfo", "required" => false, "type" => "Object"},
-    %{"name" => "google_install_referrer", "required" => false, "type" => "string"},
-    %{"name" => "include_dwell_data", "required" => false, "type" => "bool"},
-    %{"name" => "include_video_data", "required" => false, "type" => "bool"},
-    %{"name" => "install_id", "required" => false, "type" => "string"},
-    %{"name" => "install_referrer", "required" => false, "type" => "string"},
-    %{"name" => "install_timestamp", "required" => false, "type" => "float"},
-    %{"name" => "installer_package", "required" => false, "type" => "string"},
-    %{"name" => "is_circuit_breaker_active", "required" => false, "type" => "bool"},
-    %{"name" => "is_fb", "required" => false, "type" => "bool"},
-    %{"name" => "is_redownload", "required" => false, "type" => "bool"},
-    %{"name" => "last_new_install_time", "required" => false, "type" => "unsigned int"},
-    %{"name" => "last_session_time", "required" => false, "type" => "unsigned int"},
-    %{"name" => "limited_data_use", "required" => false, "type" => "bool"},
-    %{"name" => "meta_install_referrer", "required" => false, "type" => "string"},
-    %{"name" => "migration_bundle", "required" => false, "type" => "string"},
-    %{"name" => "operational_parameters", "required" => false, "type" => "list<map>"},
-    %{"name" => "page_id", "required" => false, "type" => "unsigned int"},
-    %{"name" => "page_scoped_user_id", "required" => false, "type" => "unsigned int"},
-    %{"name" => "receipt_data", "required" => false, "type" => "string"},
-    %{"name" => "sdk_version", "required" => false, "type" => "string"},
-    %{"name" => "ud", "required" => false, "type" => "map"},
-    %{"name" => "url_schemes", "required" => false, "type" => "list<string>"},
-    %{"name" => "user_id", "required" => false, "type" => "string"},
-    %{
-      "name" => "user_id_type",
-      "required" => false,
-      "type" => "applicationactivities_user_id_type_enum_param",
-      "values" => ["INSTANT_GAMES_PLAYER_ID"]
-    },
-    %{"name" => "vendor_id", "required" => false, "type" => "string"},
-    %{"name" => "windows_attribution_id", "required" => false, "type" => "string"}
-  ])
-
   operation(:get_ad_placement_groups, "GET", "ad_placement_groups", nil, [])
 
   operation(:get_adnetwork_placements, "GET", "adnetwork_placements", nil, [
@@ -464,12 +395,6 @@ defmodule MetaAds.Models.Application do
   ])
 
   operation(:get_appassets, "GET", "appassets", nil, [])
-
-  operation(:create_assets, "POST", "assets", nil, [
-    %{"name" => "asset", "required" => true, "type" => "file"},
-    %{"name" => "comment", "required" => false, "type" => "string"},
-    %{"name" => "type", "required" => true, "type" => "string"}
-  ])
 
   operation(:get_authorized_adaccounts, "GET", "authorized_adaccounts", nil, [
     %{"name" => "business", "required" => false, "type" => "string"}

@@ -9,6 +9,7 @@ defmodule MetaAds.Params do
     spec_params = Enum.map(spec_params, &%{&1 | "name" => to_string(&1["name"])})
 
     with {:ok, params} <- validate_required(params, spec_params),
+         {:ok, params} <- validate_required_values(params, spec_params),
          {:ok, params} <- validate_enums(params, spec_params) do
       {:ok, params}
     end
@@ -71,6 +72,16 @@ defmodule MetaAds.Params do
         {:cont, {:ok, acc}}
       end
     end)
+  end
+
+  defp validate_required_values(params, spec_params) do
+    case Enum.find(spec_params, &(&1["required"] and is_nil(params[&1["name"]]))) do
+      nil ->
+        {:ok, params}
+
+      param ->
+        {:error, Error.validation("params.#{param["name"]}", "must not be nil")}
+    end
   end
 
   defp validate_enum_value(%{"values" => values} = param, value, acc) do

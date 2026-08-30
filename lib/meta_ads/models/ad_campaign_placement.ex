@@ -2,7 +2,7 @@
 defmodule MetaAds.Models.AdCampaignPlacement do
   use MetaAds.Model
 
-  operation(:get_get, "GET", "", "ad_campaign_placement", [
+  operation(:get, "GET", "", "ad_campaign_placement", [
     %{"name" => "account_id", "required" => true, "type" => "string"},
     %{"name" => "billing_event", "required" => true, "type" => "string"},
     %{"name" => "buying_type", "required" => true, "type" => "string"},

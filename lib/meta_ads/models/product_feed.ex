@@ -288,15 +288,6 @@ defmodule MetaAds.Models.ProductFeed do
 
   operation(:get_uploads, "GET", "uploads", nil, [])
 
-  operation(:create_uploads, "POST", "uploads", nil, [
-    %{"name" => "fbe_external_business_id", "required" => false, "type" => "string"},
-    %{"name" => "file", "required" => false, "type" => "file"},
-    %{"name" => "password", "required" => false, "type" => "string"},
-    %{"name" => "update_only", "required" => false, "type" => "bool"},
-    %{"name" => "url", "required" => false, "type" => "string"},
-    %{"name" => "username", "required" => false, "type" => "string"}
-  ])
-
   operation(:get_vehicle_offers, "GET", "vehicle_offers", nil, [
     %{"name" => "bulk_pagination", "required" => false, "type" => "bool"},
     %{"name" => "filter", "required" => false, "type" => "Object"}

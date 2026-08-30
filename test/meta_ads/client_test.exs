@@ -51,11 +51,15 @@ defmodule MetaAds.ClientTest do
                "special_ad_categories" => ["NONE"]
              })
 
-    assert_received {:http_request, :post, "https://graph.test/v26.0/act_123/campaigns", _headers,
+    assert_received {:http_request, :post, "https://graph.test/v26.0/act_123/campaigns", headers,
                      body, _options}
 
     decoded = URI.decode_query(body)
     proof = Base.encode16(:crypto.mac(:hmac, :sha256, "secret", "token"), case: :lower)
+
+    assert List.keyfind(headers, "content-type", 0) ==
+             {"content-type", "application/x-www-form-urlencoded"}
+
     assert decoded["name"] == "Test campaign"
     assert decoded["special_ad_categories"] == ~s(["NONE"])
     assert decoded["appsecret_proof"] == proof
@@ -77,6 +81,29 @@ defmodule MetaAds.ClientTest do
     assert error.field == "params.date_preset"
     assert error.message =~ "NOT_A_PRESET"
     refute_received {:http_request, _, _, _, _, _}
+
+    assert {:error, error} =
+             apply(MetaAds.Models.IntegrityAppeal, :get_ad_appeal_bulk_eligibility, [
+               client,
+               "appeal",
+               %{"ad_ids" => nil}
+             ])
+
+    assert error.field == "params.ad_ids"
+    refute_received {:http_request, _, _, _, _, _}
+  end
+
+  test "classifies Graph error envelopes independently of HTTP status" do
+    {:ok, client} = MetaAds.client(access_token: "token", http_client: TestRecordingHTTP)
+
+    assert {:error, %MetaAds.Error{} = error} =
+             AdAccount.get_campaigns(client, "act_123", %{},
+               response_body: ~s({"error":{"message":"Invalid","code":100}})
+             )
+
+    assert error.status == 200
+    assert error.code == 100
+    assert error.message == "Invalid"
   end
 
   test "follow only accepts paging URLs on the configured endpoint" do
@@ -96,5 +123,32 @@ defmodule MetaAds.ClientTest do
     assert {:error, error} = MetaAds.Client.follow(client, response)
     assert error.field == "paging.next"
     refute_received {:http_request, :get, "https://evil.test/next", _, _, _}
+  end
+
+  test "follow uses client defaults and the shared response classifier" do
+    {:ok, client} =
+      MetaAds.client(
+        access_token: "token",
+        endpoint: "https://graph.test",
+        http_client: TestRecordingHTTP,
+        timeout: 1234
+      )
+
+    {:ok, page} =
+      MetaAds.Response.new(
+        200,
+        [],
+        ~s({"paging":{"next":"https://graph.test/v26.0/next"}})
+      )
+
+    assert {:error, %MetaAds.Error{code: 100}} =
+             MetaAds.Client.follow(client, page,
+               response_body: ~s({"error":{"message":"Invalid","code":100}})
+             )
+
+    assert_received {:http_request, :get, "https://graph.test/v26.0/next", _headers, nil, options}
+
+    assert options[:timeout] == 1234
+    assert options[:connect_timeout] == 1234
   end
 end

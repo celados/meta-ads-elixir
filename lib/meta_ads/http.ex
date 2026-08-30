@@ -4,7 +4,8 @@ defmodule MetaAds.HTTP do
 
   Tests and applications can replace `:http_client` with any module that
   implements this callback; the SDK's request construction stays independent of
-  the HTTP adapter.
+  the HTTP adapter. POST and PUT bodies are URL-encoded and carry an explicit
+  `content-type` header.
   """
 
   alias MetaAds.Response

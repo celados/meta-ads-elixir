@@ -2,6 +2,6 @@
 defmodule MetaAds.Models.ProductCatalogProfessionalServicesItem do
   use MetaAds.Model
 
-  operation(:update_put, "PUT", "", nil, [])
+  operation(:update, "PUT", "", nil, [])
   finish()
 end

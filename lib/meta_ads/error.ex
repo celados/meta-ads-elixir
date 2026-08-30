@@ -3,7 +3,8 @@ defmodule MetaAds.Error do
   Transport, validation, and Meta Graph API errors.
 
   Meta's error envelope is retained in `:details` so callers can handle new
-  error fields without an SDK release.
+  error fields without an SDK release. Raw response headers and body are also
+  retained for proxy, gateway, and malformed-response diagnostics.
   """
 
   defexception [
@@ -14,6 +15,8 @@ defmodule MetaAds.Error do
     :type,
     :fbtrace_id,
     :details,
+    :headers,
+    :body,
     :field,
     message: "Meta Ads API request failed"
   ]
@@ -29,7 +32,7 @@ defmodule MetaAds.Error do
 
   @doc "Maps Meta's Graph API error envelope."
   @spec from_response(MetaAds.Response.t()) :: t()
-  def from_response(%MetaAds.Response{status: status, body: body}) do
+  def from_response(%MetaAds.Response{status: status, headers: headers, body: body}) do
     envelope = if is_map(body), do: Map.get(body, "error", %{}), else: %{}
     envelope = if is_map(envelope), do: envelope, else: %{}
 
@@ -40,6 +43,8 @@ defmodule MetaAds.Error do
       type: envelope["type"],
       fbtrace_id: envelope["fbtrace_id"],
       details: envelope,
+      headers: headers,
+      body: body,
       message: envelope["message"] || "Meta Ads API returned HTTP #{status}"
     }
   end

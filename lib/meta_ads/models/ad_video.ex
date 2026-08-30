@@ -55,12 +55,6 @@ defmodule MetaAds.Models.AdVideo do
   operation(:get_boost_ads_list, "GET", "boost_ads_list", nil, [])
   operation(:get_captions, "GET", "captions", nil, [])
 
-  operation(:create_captions, "POST", "captions", nil, [
-    %{"name" => "captions_file", "required" => false, "type" => "file"},
-    %{"name" => "default_locale", "required" => false, "type" => "string"},
-    %{"name" => "locales_to_delete", "required" => false, "type" => "list<string>"}
-  ])
-
   operation(:get_collaborators, "GET", "collaborators", nil, [])
 
   operation(:create_collaborators, "POST", "collaborators", nil, [
@@ -150,11 +144,6 @@ defmodule MetaAds.Models.AdVideo do
   operation(:get_sponsor_tags, "GET", "sponsor_tags", nil, [])
   operation(:get_tags, "GET", "tags", nil, [])
   operation(:get_thumbnails, "GET", "thumbnails", nil, [])
-
-  operation(:create_thumbnails, "POST", "thumbnails", nil, [
-    %{"name" => "is_preferred", "required" => false, "type" => "bool"},
-    %{"name" => "source", "required" => true, "type" => "file"}
-  ])
 
   operation(:get_video_insights, "GET", "video_insights", nil, [
     %{"name" => "metric", "required" => false, "type" => "list<Object>"},

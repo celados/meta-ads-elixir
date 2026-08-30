@@ -6,7 +6,8 @@ defmodule Mix.Tasks.MetaAds.Generate do
 
   The default input is the vendored schema snapshot. Keeping a pinned snapshot
   makes package builds reproducible; updating it is an explicit schema upgrade,
-  not a side effect of compilation.
+  not a side effect of compilation. Operations with file parameters remain
+  omitted until the runtime has a multipart transport contract.
   """
 
   use Mix.Task
@@ -34,6 +35,10 @@ defmodule Mix.Tasks.MetaAds.Generate do
       Mix.raise("Schema directory does not exist: #{specs_path}")
     end
 
+    if specs_path == Path.join(project_root, @default_specs) do
+      Mix.MetaAds.Snapshot.verify_local!(project_root)
+    end
+
     spec_files =
       specs_path
       |> Path.join("*.json")
@@ -49,28 +54,35 @@ defmodule Mix.Tasks.MetaAds.Generate do
     File.mkdir_p!(output_path)
 
     counts =
-      Enum.reduce(model_files, %{models: 0, operations: 0, skipped: 0}, fn path, counts ->
-        case JSON.decode(File.read!(path)) do
-          {:ok, %{} = spec} ->
-            {operation_count, skipped} = write_model!(output_path, path, spec, enum_types)
+      Enum.reduce(
+        model_files,
+        %{models: 0, operations: 0, skipped_dynamic: 0, skipped_file: 0},
+        fn path, counts ->
+          case JSON.decode(File.read!(path)) do
+            {:ok, %{} = spec} ->
+              stats = write_model!(output_path, path, spec, enum_types)
 
-            %{
-              counts
-              | models: counts.models + 1,
-                operations: counts.operations + operation_count,
-                skipped: counts.skipped + skipped
-            }
+              %{
+                counts
+                | models: counts.models + 1,
+                  operations: counts.operations + stats.operations,
+                  skipped_dynamic: counts.skipped_dynamic + stats.skipped_dynamic,
+                  skipped_file: counts.skipped_file + stats.skipped_file
+              }
 
-          {:ok, other} ->
-            Mix.raise("Expected an object schema in #{path}, got: #{inspect(other)}")
+            {:ok, other} ->
+              Mix.raise("Expected an object schema in #{path}, got: #{inspect(other)}")
 
-          {:error, reason} ->
-            Mix.raise("Invalid JSON in #{path}: #{inspect(reason)}")
+            {:error, reason} ->
+              Mix.raise("Invalid JSON in #{path}: #{inspect(reason)}")
+          end
         end
-      end)
+      )
 
     Mix.shell().info(
-      "Generated #{counts.models} models and #{counts.operations} operations; skipped #{counts.skipped} dynamic endpoint(s)"
+      "Generated #{counts.models} models and #{counts.operations} operations; " <>
+        "skipped #{counts.skipped_dynamic} dynamic endpoint(s) and " <>
+        "#{counts.skipped_file} multipart operation(s)"
     )
 
     output_path
@@ -111,28 +123,38 @@ defmodule Mix.Tasks.MetaAds.Generate do
         "  field #{inspect(field_name)}, #{inspect(type)}, #{literal(values)}"
       end)
 
-    {operation_lines, {operation_count, skipped}} =
+    {operation_lines, stats} =
       spec
       |> Map.get("apis", [])
-      |> Enum.map_reduce({0, 0}, fn api, {operation_count, skipped} ->
-        endpoint = Map.get(api, "endpoint", "")
+      |> Enum.map_reduce(
+        %{operations: 0, skipped_dynamic: 0, skipped_file: 0},
+        fn api, stats ->
+          endpoint = Map.get(api, "endpoint", "")
+          params = Map.get(api, "params", [])
 
-        if String.contains?(endpoint, "{") do
-          {"", {operation_count, skipped + 1}}
-        else
-          base_path = Map.get(api, "basePath") || Map.get(api, "base_path")
-          params = Enum.map(Map.get(api, "params", []), &param_with_values(&1, enum_types))
-          # Macro escaping is used instead of inspect/1 because Mix truncates
-          # deeply nested inspect output by default, which emits invalid source.
-          params_literal = literal(params)
+          cond do
+            String.contains?(endpoint, "{") ->
+              {"", %{stats | skipped_dynamic: stats.skipped_dynamic + 1}}
 
-          line =
-            "  operation #{inspect(function_name(api, endpoint))}, #{inspect(api["method"])}, " <>
-              "#{inspect(endpoint)}, #{inspect(base_path)}, #{params_literal}"
+            Enum.any?(params, &file_param?/1) ->
+              # A generated function would otherwise silently form-encode a file path.
+              {"", %{stats | skipped_file: stats.skipped_file + 1}}
 
-          {line, {operation_count + 1, skipped}}
+            true ->
+              base_path = Map.get(api, "basePath") || Map.get(api, "base_path")
+              params = Enum.map(params, &param_with_values(&1, enum_types))
+              # Macro escaping is used instead of inspect/1 because Mix truncates
+              # deeply nested inspect output by default, which emits invalid source.
+              params_literal = literal(params)
+
+              line =
+                "  operation #{inspect(function_name(api, endpoint))}, #{inspect(api["method"])}, " <>
+                  "#{inspect(endpoint)}, #{inspect(base_path)}, #{params_literal}"
+
+              {line, %{stats | operations: stats.operations + 1}}
+          end
         end
-      end)
+      )
 
     body =
       [
@@ -145,7 +167,7 @@ defmodule Mix.Tasks.MetaAds.Generate do
         ["  finish()", "end", ""]
 
     File.write!(Path.join(output_path, file_name), Enum.join(body, "\n"))
-    {operation_count, skipped}
+    stats
   end
 
   defp param_with_values(param, enum_types) do
@@ -164,6 +186,20 @@ defmodule Mix.Tasks.MetaAds.Generate do
   defp enum_values(type, enum_types) do
     Map.get(enum_types, type)
   end
+
+  defp file_param?(%{"type" => "file"}), do: true
+
+  defp file_param?(%{"type" => "list<" <> rest}) do
+    if String.ends_with?(rest, ">") do
+      rest
+      |> String.slice(0, byte_size(rest) - 1)
+      |> then(&file_param?(%{"type" => &1}))
+    else
+      false
+    end
+  end
+
+  defp file_param?(_param), do: false
 
   defp function_name(api, endpoint) do
     action =
@@ -184,10 +220,31 @@ defmodule Mix.Tasks.MetaAds.Generate do
     # name is the only stable discriminator once basePath differs.
     suffix =
       case api["name"] do
-        "gen" <> named when endpoint == "" -> named |> Macro.underscore() |> String.trim("_")
-        _ -> suffix
+        "gen" <> named when endpoint == "" ->
+          named
+          |> Macro.underscore()
+          |> String.trim("_")
+          |> trim_generated_method(api["method"])
+
+        _ ->
+          suffix
       end
 
     if suffix == "", do: String.to_atom(action), else: String.to_atom(action <> "_" <> suffix)
+  end
+
+  defp trim_generated_method(suffix, method) do
+    method = String.downcase(method)
+
+    cond do
+      suffix == method ->
+        ""
+
+      String.starts_with?(suffix, method <> "_") ->
+        String.replace_prefix(suffix, method <> "_", "")
+
+      true ->
+        suffix
+    end
   end
 end

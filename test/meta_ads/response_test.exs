@@ -30,4 +30,15 @@ defmodule MetaAds.ResponseTest do
     assert error.type == "OAuthException"
     assert error.message == "Invalid"
   end
+
+  test "retains raw response diagnostics for non-Graph HTTP errors" do
+    {:ok, response} = Response.new(502, [{"x-request-id", "request-1"}], "bad gateway")
+
+    error = MetaAds.Error.from_response(response)
+
+    assert error.status == 502
+    assert error.body == "bad gateway"
+    assert error.headers == [{"x-request-id", "request-1"}]
+    assert error.details == %{}
+  end
 end

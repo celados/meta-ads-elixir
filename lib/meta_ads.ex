@@ -14,7 +14,8 @@ defmodule MetaAds do
   Creates a client.
 
   Required: `:access_token`. Optional: `:app_secret`, `:api_version`,
-  `:endpoint`, `:http_client`, and `:timeout`.
+  `:endpoint`, `:http_client`, and `:timeout`. Direct loopback transport tests
+  may also set `:allow_insecure_localhost`; applications should use HTTPS.
 
   ## Examples
 

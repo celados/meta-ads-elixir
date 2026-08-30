@@ -298,20 +298,6 @@ defmodule MetaAds.Models.ProductCatalog do
     %{"name" => "handle", "required" => true, "type" => "string"}
   ])
 
-  operation(:create_hotel_rooms_batch, "POST", "hotel_rooms_batch", nil, [
-    %{"name" => "file", "required" => false, "type" => "file"},
-    %{"name" => "password", "required" => false, "type" => "string"},
-    %{
-      "name" => "standard",
-      "required" => true,
-      "type" => "productcataloghotel_rooms_batch_standard_enum_param",
-      "values" => ["google"]
-    },
-    %{"name" => "update_only", "required" => false, "type" => "bool"},
-    %{"name" => "url", "required" => false, "type" => "string"},
-    %{"name" => "username", "required" => false, "type" => "string"}
-  ])
-
   operation(:get_hotels, "GET", "hotels", nil, [
     %{"name" => "bulk_pagination", "required" => false, "type" => "bool"},
     %{"name" => "filter", "required" => false, "type" => "Object"}
@@ -462,20 +448,6 @@ defmodule MetaAds.Models.ProductCatalog do
 
   operation(:get_pricing_variables_batch, "GET", "pricing_variables_batch", nil, [
     %{"name" => "handle", "required" => true, "type" => "string"}
-  ])
-
-  operation(:create_pricing_variables_batch, "POST", "pricing_variables_batch", nil, [
-    %{"name" => "file", "required" => false, "type" => "file"},
-    %{"name" => "password", "required" => false, "type" => "string"},
-    %{
-      "name" => "standard",
-      "required" => true,
-      "type" => "productcatalogpricing_variables_batch_standard_enum_param",
-      "values" => ["google"]
-    },
-    %{"name" => "update_only", "required" => false, "type" => "bool"},
-    %{"name" => "url", "required" => false, "type" => "string"},
-    %{"name" => "username", "required" => false, "type" => "string"}
   ])
 
   operation(:get_product_feeds, "GET", "product_feeds", nil, [])

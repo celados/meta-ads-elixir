@@ -2,7 +2,7 @@
 defmodule MetaAds.Models.ProductCatalogHotelsItem do
   use MetaAds.Model
 
-  operation(:get_get, "GET", "", nil, [
+  operation(:get, "GET", "", nil, [
     %{
       "name" => "display_format",
       "required" => false,

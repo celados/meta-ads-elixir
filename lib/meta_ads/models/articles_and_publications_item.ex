@@ -2,6 +2,6 @@
 defmodule MetaAds.Models.ArticlesAndPublicationsItem do
   use MetaAds.Model
 
-  operation(:delete_delete, "DELETE", "", nil, [])
+  operation(:delete, "DELETE", "", nil, [])
   finish()
 end

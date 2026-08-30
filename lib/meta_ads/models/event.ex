@@ -87,60 +87,6 @@ defmodule MetaAds.Models.Event do
   operation(:get_feed, "GET", "feed", nil, [])
   operation(:get_live_videos, "GET", "live_videos", nil, [])
 
-  operation(:create_live_videos, "POST", "live_videos", nil, [
-    %{"name" => "content_tags", "required" => false, "type" => "list<string>"},
-    %{"name" => "description", "required" => false, "type" => "string"},
-    %{"name" => "enable_backup_ingest", "required" => false, "type" => "bool"},
-    %{"name" => "encoding_settings", "required" => false, "type" => "string"},
-    %{"name" => "event_params", "required" => false, "type" => "Object"},
-    %{"name" => "fisheye_video_cropped", "required" => false, "type" => "bool"},
-    %{"name" => "front_z_rotation", "required" => false, "type" => "float"},
-    %{"name" => "is_audio_only", "required" => false, "type" => "bool"},
-    %{"name" => "is_spherical", "required" => false, "type" => "bool"},
-    %{"name" => "original_fov", "required" => false, "type" => "unsigned int"},
-    %{"name" => "privacy", "required" => false, "type" => "string"},
-    %{
-      "name" => "projection",
-      "required" => false,
-      "type" => "eventlive_videos_projection_enum_param",
-      "values" => ["CUBEMAP", "EQUIRECTANGULAR", "HALF_EQUIRECTANGULAR"]
-    },
-    %{"name" => "published", "required" => false, "type" => "bool"},
-    %{"name" => "schedule_custom_profile_image", "required" => false, "type" => "file"},
-    %{
-      "name" => "spatial_audio_format",
-      "required" => false,
-      "type" => "eventlive_videos_spatial_audio_format_enum_param",
-      "values" => ["ambiX_4"]
-    },
-    %{
-      "name" => "status",
-      "required" => false,
-      "type" => "eventlive_videos_status_enum_param",
-      "values" => [
-        "LIVE_NOW",
-        "SCHEDULED_CANCELED",
-        "SCHEDULED_LIVE",
-        "SCHEDULED_UNPUBLISHED",
-        "UNPUBLISHED"
-      ]
-    },
-    %{
-      "name" => "stereoscopic_mode",
-      "required" => false,
-      "type" => "eventlive_videos_stereoscopic_mode_enum_param",
-      "values" => ["LEFT_RIGHT", "MONO", "MULTI_VIEW", "TOP_BOTTOM"]
-    },
-    %{"name" => "stop_on_delete_stream", "required" => false, "type" => "bool"},
-    %{
-      "name" => "stream_type",
-      "required" => false,
-      "type" => "eventlive_videos_stream_type_enum_param",
-      "values" => ["AMBIENT", "REGULAR"]
-    },
-    %{"name" => "title", "required" => false, "type" => "string"}
-  ])
-
   operation(:get_photos, "GET", "photos", nil, [])
   operation(:get_picture, "GET", "picture", nil, [])
   operation(:get_posts, "GET", "posts", nil, [])

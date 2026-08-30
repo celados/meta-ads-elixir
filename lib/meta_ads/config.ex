@@ -25,13 +25,14 @@ defmodule MetaAds.Config do
     app_secret = optional_string(attrs[:app_secret])
     api_version = string(attrs[:api_version]) || "v26.0"
     endpoint = string(attrs[:endpoint]) || "https://graph.facebook.com"
+    allow_insecure_localhost = attrs[:allow_insecure_localhost] == true
     http_client = attrs[:http_client] || MetaAds.HTTP.Httpc
     timeout = attrs[:timeout] || 15_000
 
     with :ok <- validate_presence("access_token", access_token),
          :ok <- validate_secret("app_secret", app_secret),
          :ok <- validate_api_version(api_version),
-         :ok <- validate_endpoint(endpoint),
+         {:ok, endpoint} <- validate_endpoint(endpoint, allow_insecure_localhost),
          :ok <- validate_http_client(http_client),
          :ok <- validate_timeout(timeout) do
       {:ok,
@@ -73,15 +74,45 @@ defmodule MetaAds.Config do
       else: {:error, MetaAds.Error.validation("api_version", "must look like v26.0")}
   end
 
-  defp validate_endpoint(value) do
-    uri = URI.parse(value)
+  defp validate_endpoint(value, allow_insecure_localhost) do
+    with {:ok, uri} <- URI.new(value),
+         :ok <- validate_origin(uri),
+         :ok <- validate_endpoint_scheme(uri, allow_insecure_localhost) do
+      normalized =
+        uri
+        |> Map.put(:scheme, String.downcase(uri.scheme))
+        |> Map.put(:host, String.downcase(uri.host))
+        |> Map.put(:path, nil)
+        |> URI.to_string()
 
-    if uri.scheme in ["http", "https"] and is_binary(uri.host) and uri.host != "" do
-      :ok
+      {:ok, normalized}
     else
-      {:error, MetaAds.Error.validation("endpoint", "must be an absolute HTTP(S) URL")}
+      _error ->
+        {:error,
+         MetaAds.Error.validation(
+           "endpoint",
+           "must be an origin-only HTTPS URL (loopback HTTP requires allow_insecure_localhost: true)"
+         )}
     end
   end
+
+  defp validate_origin(%URI{} = uri) do
+    if is_binary(uri.scheme) and is_binary(uri.host) and uri.host != "" and
+         uri.userinfo == nil and uri.query == nil and uri.fragment == nil and
+         uri.path in [nil, "", "/"] do
+      :ok
+    else
+      :error
+    end
+  end
+
+  defp validate_endpoint_scheme(%URI{scheme: "https"}, _allow_insecure_localhost), do: :ok
+
+  defp validate_endpoint_scheme(%URI{scheme: "http", host: host}, true)
+       when host in ["localhost", "127.0.0.1", "::1"],
+       do: :ok
+
+  defp validate_endpoint_scheme(_uri, _allow_insecure_localhost), do: :error
 
   defp validate_http_client(module) when is_atom(module), do: :ok
 
