@@ -10,6 +10,7 @@ defmodule MetaAds.ConfigTest do
     assert {:error, _} = MetaAds.client(access_token: "token", api_version: "../v26.0")
     assert {:error, _} = MetaAds.client(access_token: "token", endpoint: "not-a-url")
     assert {:error, _} = MetaAds.client(access_token: "token", timeout: 0)
+    assert {:error, _} = MetaAds.client(access_token: "token", http_client: String)
   end
 
   test "requires an origin-only HTTPS endpoint" do

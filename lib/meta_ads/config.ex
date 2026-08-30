@@ -114,10 +114,19 @@ defmodule MetaAds.Config do
 
   defp validate_endpoint_scheme(_uri, _allow_insecure_localhost), do: :error
 
-  defp validate_http_client(module) when is_atom(module), do: :ok
+  defp validate_http_client(module) when is_atom(module) do
+    if Code.ensure_loaded?(module) and function_exported?(module, :request, 5) do
+      :ok
+    else
+      {:error,
+       MetaAds.Error.validation("http_client", "must be a loaded module implementing request/5")}
+    end
+  end
 
   defp validate_http_client(_value),
-    do: {:error, MetaAds.Error.validation("http_client", "must be a module")}
+    do:
+      {:error,
+       MetaAds.Error.validation("http_client", "must be a loaded module implementing request/5")}
 
   defp validate_timeout(timeout) when is_integer(timeout) and timeout > 0, do: :ok
 
