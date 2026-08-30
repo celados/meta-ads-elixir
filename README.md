@@ -9,7 +9,7 @@ The package is not published to Hex yet. Use the Git dependency:
 ```elixir
 def deps do
   [
-    {:meta_ads, git: "https://github.com/ethan-huo/meta-ads-elixir.git", tag: "v0.1.1"}
+    {:meta_ads, git: "https://github.com/celados/meta-ads-elixir.git", tag: "v0.1.1"}
   ]
 end
 ```

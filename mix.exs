@@ -45,7 +45,7 @@ defmodule MetaAds.MixProject do
         "LICENSE.meta-codegen"
       ],
       licenses: ["MIT", "Facebook Platform License"],
-      links: %{"GitHub" => "https://github.com/ethan-huo/meta-ads-elixir"}
+      links: %{"GitHub" => "https://github.com/celados/meta-ads-elixir"}
     ]
   end
 
