@@ -1,0 +1,21 @@
+{
+    "apis": [],
+    "fields": [
+        {
+            "name": "caption",
+            "type": "string"
+        },
+        {
+            "name": "media_id",
+            "type": "string"
+        },
+        {
+            "name": "media_owner_username",
+            "type": "string"
+        },
+        {
+            "name": "media_url",
+            "type": "string"
+        }
+    ]
+}

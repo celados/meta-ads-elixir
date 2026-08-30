@@ -1,0 +1,69 @@
+{
+    "apis": [],
+    "fields": [
+        {
+            "name": "aspect_ratio_config",
+            "type": "Object"
+        },
+        {
+            "name": "background_color",
+            "type": "string"
+        },
+        {
+            "name": "catalog_feed_tag_name",
+            "type": "string"
+        },
+        {
+            "name": "fb_feed_tag_name",
+            "type": "string"
+        },
+        {
+            "name": "fb_reels_tag_name",
+            "type": "string"
+        },
+        {
+            "name": "fb_story_tag_name",
+            "type": "string"
+        },
+        {
+            "name": "font_name",
+            "type": "string"
+        },
+        {
+            "name": "ig_feed_tag_name",
+            "type": "string"
+        },
+        {
+            "name": "ig_reels_tag_name",
+            "type": "string"
+        },
+        {
+            "name": "ig_stream_tag_name",
+            "type": "string"
+        },
+        {
+            "name": "image_crop_style",
+            "type": "string"
+        },
+        {
+            "name": "pe_carousel",
+            "type": "Object"
+        },
+        {
+            "name": "recomposition_type",
+            "type": "Object"
+        },
+        {
+            "name": "showcase_card_display",
+            "type": "string"
+        },
+        {
+            "name": "text_extraction",
+            "type": "Object"
+        },
+        {
+            "name": "text_style",
+            "type": "string"
+        }
+    ]
+}

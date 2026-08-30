@@ -1,0 +1,12 @@
+{
+    "apis": [
+        {
+            "name": "genPost",
+            "method": "POST",
+            "endpoint": "account_controls",
+            "return": "AdAccountAccountControlsPost",
+            "params": []
+        }
+    ],
+    "fields": []
+}

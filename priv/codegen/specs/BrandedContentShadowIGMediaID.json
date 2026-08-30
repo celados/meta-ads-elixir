@@ -1,0 +1,41 @@
+{
+    "apis": [],
+    "fields": [
+        {
+            "name": "eligibility_errors",
+            "type": "list<string>"
+        },
+        {
+            "name": "has_permission_for_partnership_ad",
+            "type": "bool"
+        },
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "is_creator_allowlisted",
+            "type": "bool"
+        },
+        {
+            "name": "linked_products",
+            "type": "list<ProductItem>"
+        },
+        {
+            "name": "owner_id",
+            "type": "string"
+        },
+        {
+            "name": "permalink",
+            "type": "string"
+        },
+        {
+            "name": "product_suggestions",
+            "type": "list<ProductItem>"
+        },
+        {
+            "name": "recommended_campaign_objectives",
+            "type": "list<string>"
+        }
+    ]
+}

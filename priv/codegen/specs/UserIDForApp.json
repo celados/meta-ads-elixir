@@ -1,0 +1,17 @@
+{
+    "apis": [],
+    "fields": [
+        {
+            "name": "app",
+            "type": "Application"
+        },
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "instant_game_player_id",
+            "type": "string"
+        }
+    ]
+}

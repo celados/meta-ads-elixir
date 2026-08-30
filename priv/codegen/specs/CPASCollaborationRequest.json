@@ -1,0 +1,88 @@
+{
+    "apis": [
+        {
+            "name": "#get",
+            "method": "GET",
+            "return": "CPASCollaborationRequest",
+            "params": []
+        }
+    ],
+    "fields": [
+        {
+            "name": "ad_account_id",
+            "type": "string"
+        },
+        {
+            "name": "ad_account_name",
+            "type": "string"
+        },
+        {
+            "name": "brands",
+            "type": "list<string>"
+        },
+        {
+            "name": "catalog_segment",
+            "type": "ProductCatalog"
+        },
+        {
+            "name": "collaborative_ads_share_settings",
+            "type": "CollaborativeAdsShareSettings"
+        },
+        {
+            "name": "contact_email",
+            "type": "string"
+        },
+        {
+            "name": "contact_first_name",
+            "type": "string"
+        },
+        {
+            "name": "contact_last_name",
+            "type": "string"
+        },
+        {
+            "name": "creation_time",
+            "type": "datetime"
+        },
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "phone_number",
+            "type": "string"
+        },
+        {
+            "name": "receiver_business",
+            "type": "Business"
+        },
+        {
+            "name": "requester_agency_or_brand",
+            "type": "string"
+        },
+        {
+            "name": "seller_id",
+            "type": "string"
+        },
+        {
+            "name": "sender_business",
+            "type": "Business"
+        },
+        {
+            "name": "sender_client_business",
+            "type": "Business"
+        },
+        {
+            "name": "shop_url",
+            "type": "string"
+        },
+        {
+            "name": "source",
+            "type": "string"
+        },
+        {
+            "name": "status",
+            "type": "string"
+        }
+    ]
+}

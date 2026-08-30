@@ -1,0 +1,209 @@
+{
+    "apis": [],
+    "fields": [
+        {
+            "name": "application_id",
+            "type": "string"
+        },
+        {
+            "name": "boosted_product_set_id",
+            "type": "string"
+        },
+        {
+            "name": "conversion_goal_id",
+            "type": "string"
+        },
+        {
+            "name": "custom_attribution_source_ids",
+            "type": "list<string>"
+        },
+        {
+            "name": "custom_conversion_id",
+            "type": "string"
+        },
+        {
+            "name": "custom_event_str",
+            "type": "string"
+        },
+        {
+            "name": "custom_event_type",
+            "type": "AdPromotedObject_custom_event_type"
+        },
+        {
+            "name": "dataset_split_id",
+            "type": "string"
+        },
+        {
+            "name": "dataset_split_ids",
+            "type": "list<string>"
+        },
+        {
+            "name": "event_id",
+            "type": "string"
+        },
+        {
+            "name": "full_funnel_objective",
+            "type": "AdPromotedObject_full_funnel_objective"
+        },
+        {
+            "name": "fundraiser_campaign_id",
+            "type": "string"
+        },
+        {
+            "name": "instagram_actor_id",
+            "type": "string"
+        },
+        {
+            "name": "is_catalog_user_acknowledged",
+            "type": "bool"
+        },
+        {
+            "name": "job_listing_id",
+            "type": "string"
+        },
+        {
+            "name": "lead_ads_custom_event_str",
+            "type": "string"
+        },
+        {
+            "name": "lead_ads_custom_event_type",
+            "type": "AdPromotedObject_lead_ads_custom_event_type"
+        },
+        {
+            "name": "lead_ads_follow_up_event",
+            "type": "string"
+        },
+        {
+            "name": "lead_ads_form_event_source_type",
+            "type": "string"
+        },
+        {
+            "name": "lead_ads_offsite_conversion_type",
+            "type": "string"
+        },
+        {
+            "name": "lead_ads_quality_volume_setting",
+            "type": "string"
+        },
+        {
+            "name": "lead_ads_selected_pixel_id",
+            "type": "string"
+        },
+        {
+            "name": "live_video_destination",
+            "type": "string"
+        },
+        {
+            "name": "mcme_conversion_id",
+            "type": "string"
+        },
+        {
+            "name": "multi_event_product",
+            "type": "int"
+        },
+        {
+            "name": "object_store_url",
+            "type": "string"
+        },
+        {
+            "name": "object_store_urls",
+            "type": "list<string>"
+        },
+        {
+            "name": "offer_id",
+            "type": "string"
+        },
+        {
+            "name": "offline_conversion_data_set_id",
+            "type": "string"
+        },
+        {
+            "name": "offsite_conversion_event_id",
+            "type": "string"
+        },
+        {
+            "name": "omnichannel_object",
+            "type": "Object"
+        },
+        {
+            "name": "page_id",
+            "type": "string"
+        },
+        {
+            "name": "passback_application_id",
+            "type": "string"
+        },
+        {
+            "name": "passback_pixel_id",
+            "type": "string"
+        },
+        {
+            "name": "pixel_aggregation_rule",
+            "type": "string"
+        },
+        {
+            "name": "pixel_id",
+            "type": "string"
+        },
+        {
+            "name": "pixel_rule",
+            "type": "string"
+        },
+        {
+            "name": "place_page_set",
+            "type": "AdPlacePageSet"
+        },
+        {
+            "name": "place_page_set_id",
+            "type": "string"
+        },
+        {
+            "name": "product_catalog_id",
+            "type": "string"
+        },
+        {
+            "name": "product_item_id",
+            "type": "string"
+        },
+        {
+            "name": "product_set",
+            "type": "ProductSet"
+        },
+        {
+            "name": "product_set_id",
+            "type": "string"
+        },
+        {
+            "name": "product_set_optimization",
+            "type": "string"
+        },
+        {
+            "name": "retention_days",
+            "type": "string"
+        },
+        {
+            "name": "smart_pse_enabled",
+            "type": "bool"
+        },
+        {
+            "name": "smart_pse_setting",
+            "type": "string"
+        },
+        {
+            "name": "value_semantic_type",
+            "type": "string"
+        },
+        {
+            "name": "variation",
+            "type": "string"
+        },
+        {
+            "name": "whats_app_business_phone_number_id",
+            "type": "string"
+        },
+        {
+            "name": "whatsapp_phone_number",
+            "type": "string"
+        }
+    ]
+}

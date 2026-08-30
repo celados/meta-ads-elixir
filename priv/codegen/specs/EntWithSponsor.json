@@ -1,0 +1,37 @@
+{
+    "apis": [],
+    "fields": [
+        {
+            "name": "has_audio_swapped_fb_copy",
+            "type": "bool"
+        },
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "is_branded_content",
+            "type": "bool"
+        },
+        {
+            "name": "owner_linked_instagram_user_v1_id",
+            "type": "string"
+        },
+        {
+            "name": "owner_picture",
+            "type": "string"
+        },
+        {
+            "name": "post_id",
+            "type": "string"
+        },
+        {
+            "name": "post_info",
+            "type": "Post"
+        },
+        {
+            "name": "promotable_id",
+            "type": "string"
+        }
+    ]
+}

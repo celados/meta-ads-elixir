@@ -1,0 +1,29 @@
+{
+    "apis": [],
+    "fields": [
+        {
+            "name": "audience_controls",
+            "type": "Object"
+        },
+        {
+            "name": "campaigns_with_error",
+            "type": "list<string>"
+        },
+        {
+            "name": "is_age_restriction_enabled",
+            "type": "bool"
+        },
+        {
+            "name": "placement_controls",
+            "type": "Object"
+        },
+        {
+            "name": "placement_controls_per_objective",
+            "type": "Object"
+        },
+        {
+            "name": "status",
+            "type": "AdAccountBusinessConstraints_status"
+        }
+    ]
+}

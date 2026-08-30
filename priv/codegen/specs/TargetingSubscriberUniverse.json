@@ -1,0 +1,21 @@
+{
+    "apis": [],
+    "fields": [
+        {
+            "name": "messaging_customer_base_for_whatsapp",
+            "type": "IDName"
+        },
+        {
+            "name": "messenger_subscriber_pool",
+            "type": "IDName"
+        },
+        {
+            "name": "messenger_subscriber_source",
+            "type": "IDName"
+        },
+        {
+            "name": "whatsapp_subscriber_source",
+            "type": "IDName"
+        }
+    ]
+}

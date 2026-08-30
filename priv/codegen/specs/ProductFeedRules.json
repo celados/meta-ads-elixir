@@ -1,0 +1,12 @@
+{
+    "apis": [
+        {
+            "name": "genGet",
+            "method": "GET",
+            "endpoint": "rules",
+            "return": "ProductFeedRulesGet",
+            "params": []
+        }
+    ],
+    "fields": []
+}

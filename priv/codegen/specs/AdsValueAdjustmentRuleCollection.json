@@ -1,0 +1,81 @@
+{
+    "apis": [
+        {
+            "method": "POST",
+            "endpoint": "delete_rule_set",
+            "return": "AdsValueAdjustmentRuleCollection",
+            "params": [
+                {
+                    "name": "status",
+                    "required": false,
+                    "type": "adsvalueadjustmentrulecollectiondelete_rule_set_status_enum_param"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "rules",
+            "return": "AdsValueAdjustmentRulePersona",
+            "params": []
+        },
+        {
+            "name": "#get",
+            "method": "GET",
+            "return": "AdsValueAdjustmentRuleCollection",
+            "params": []
+        },
+        {
+            "name": "#update",
+            "method": "POST",
+            "return": "AdsValueAdjustmentRuleCollection",
+            "params": [
+                {
+                    "name": "entry_point",
+                    "required": false,
+                    "type": "adsvalueadjustmentrulecollection_entry_point"
+                },
+                {
+                    "name": "is_default_setting",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "name",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "rules",
+                    "required": true,
+                    "type": "list<map>"
+                }
+            ]
+        }
+    ],
+    "fields": [
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "is_default_setting",
+            "type": "bool"
+        },
+        {
+            "name": "last_attach_time",
+            "type": "datetime"
+        },
+        {
+            "name": "name",
+            "type": "string"
+        },
+        {
+            "name": "product_type",
+            "type": "string"
+        },
+        {
+            "name": "status",
+            "type": "string"
+        }
+    ]
+}

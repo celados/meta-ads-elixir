@@ -1,0 +1,48 @@
+{
+    "apis": [
+        {
+            "name": "genGet",
+            "method": "GET",
+            "endpoint": "check_batch_request_status",
+            "return": "ProductCatalogCheckBatchRequestStatusGet",
+            "params": [
+                {
+                    "name": "after",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "before",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "error_priority",
+                    "required": false,
+                    "type": "ProductCatalogCheckBatchRequestStatusGet_error_priority_enum_param"
+                },
+                {
+                    "name": "fields",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "handle",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "limit",
+                    "required": false,
+                    "type": "int"
+                },
+                {
+                    "name": "load_ids_of_invalid_requests",
+                    "required": false,
+                    "type": "bool"
+                }
+            ]
+        }
+    ],
+    "fields": []
+}

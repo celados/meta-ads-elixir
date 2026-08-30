@@ -1,0 +1,17 @@
+{
+    "apis": [],
+    "fields": [
+        {
+            "name": "collaborative_ads_partner_businesses_info",
+            "type": "list<Business>"
+        },
+        {
+            "name": "dedicated_partner_business_info",
+            "type": "Business"
+        },
+        {
+            "name": "dedicated_partners_business_info",
+            "type": "list<Business>"
+        }
+    ]
+}

@@ -1,0 +1,341 @@
+{
+    "apis": [],
+    "fields": [
+        {
+            "name": "adapt_to_placement",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "add_text_overlay",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "ads_with_benefits",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "advantage_plus_creative",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "app_highlights",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "audio",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "auto_promotion_tag",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "biz_ai",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "carousel_to_video",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "catalog_feed_tag",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "creative_stickers",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "customize_product_recommendation",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "cv_transformation",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "description_automation",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "dha_optimization",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "dynamic_cta_text",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "dynamic_partner_content",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "enable_ncs_testimonials",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "enhance_cta",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "fb_feed_tag",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "fb_reels_tag",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "fb_story_tag",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "feed_caption_optimization",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "generate_cta",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "hide_price",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "hyperlink_formatting",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "ig_feed_tag",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "ig_glados_feed",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "ig_reels_tag",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "ig_stream_tag",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "ig_video_native_subtitle",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "image_animation",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "image_auto_crop",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "image_background_gen",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "image_banner",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "image_brightness_and_contrast",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "image_end_card",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "image_enhancement",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "image_templates",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "image_text_translation",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "image_touchups",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "image_uncrop",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "inline_comment",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "local_store_extension",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "media_liquidity_animated_image",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "media_order",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "media_type_automation",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "multi_creative_post_carousel",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "multi_photo_to_video",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "music_generation",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "pac_genai_recomposition",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "pac_recomposition",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "pac_relaxation",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "product_browsing",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "product_extensions",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "product_metadata_automation",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "product_tags",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "profile_card",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "profile_extension",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "replace_media_text",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "reveal_details_over_time",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "show_destination_blurbs",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "show_summary",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "site_extensions",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "standard_enhancements",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "standard_enhancements_catalog",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "text_extraction_for_headline",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "text_extraction_for_tap_target",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "text_formatting_optimization",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "text_generation",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "text_optimizations",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "text_overlay_translation",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "text_translation",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "translate_voiceover",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "video_auto_crop",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "video_filtering",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "video_highlight",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "video_highlights",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "video_to_image",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "video_uncrop",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "video_uncrop_9x16_to_9x18",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "video_voiceover",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "wa_mm_image_filtering",
+            "type": "AdCreativeFeatureDetails"
+        },
+        {
+            "name": "wa_mm_text_truncation_length",
+            "type": "AdCreativeFeatureDetails"
+        }
+    ]
+}

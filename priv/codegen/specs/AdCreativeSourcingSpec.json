@@ -1,0 +1,77 @@
+{
+    "apis": [],
+    "fields": [
+        {
+            "name": "ad_extensions_relevancy_spec",
+            "type": "Object"
+        },
+        {
+            "name": "associated_product_set_id",
+            "type": "string"
+        },
+        {
+            "name": "brand",
+            "type": "Object"
+        },
+        {
+            "name": "destination_screenshot_spec",
+            "type": "Object"
+        },
+        {
+            "name": "duplication_source",
+            "type": "string"
+        },
+        {
+            "name": "dynamic_site_links_spec",
+            "type": "Object"
+        },
+        {
+            "name": "enable_social_feedback_preservation",
+            "type": "bool"
+        },
+        {
+            "name": "featured_offering_spec",
+            "type": "Object"
+        },
+        {
+            "name": "intent",
+            "type": "Object"
+        },
+        {
+            "name": "ncs_testimonial",
+            "type": "Object"
+        },
+        {
+            "name": "pca_spec",
+            "type": "Object"
+        },
+        {
+            "name": "product_media_metadata_spec",
+            "type": "Object"
+        },
+        {
+            "name": "promotion_metadata_spec",
+            "type": "list<AdCreativePromotionMetadataSpec>"
+        },
+        {
+            "name": "site_links_data_consented",
+            "type": "Object"
+        },
+        {
+            "name": "site_links_spec",
+            "type": "list<AdCreativeSiteLinksSpec>"
+        },
+        {
+            "name": "source_url",
+            "type": "string"
+        },
+        {
+            "name": "website_media_spec",
+            "type": "Object"
+        },
+        {
+            "name": "website_summary_spec",
+            "type": "Object"
+        }
+    ]
+}

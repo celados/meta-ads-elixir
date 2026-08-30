@@ -1,0 +1,21 @@
+{
+    "apis": [],
+    "fields": [
+        {
+            "name": "details_to_ad_layout",
+            "type": "Object"
+        },
+        {
+            "name": "reveal_details",
+            "type": "Object"
+        },
+        {
+            "name": "show_spotlights",
+            "type": "Object"
+        },
+        {
+            "name": "website_summary",
+            "type": "Object"
+        }
+    ]
+}

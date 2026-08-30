@@ -1,0 +1,13 @@
+{
+    "apis": [],
+    "fields": [
+        {
+            "name": "actions",
+            "type": "list<Object>"
+        },
+        {
+            "name": "permission",
+            "type": "Object"
+        }
+    ]
+}

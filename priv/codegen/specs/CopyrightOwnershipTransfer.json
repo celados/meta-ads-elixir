@@ -1,0 +1,48 @@
+{
+    "apis": [
+        {
+            "name": "#get",
+            "method": "GET",
+            "return": "CopyrightOwnershipTransfer",
+            "params": []
+        }
+    ],
+    "fields": [
+        {
+            "name": "assets",
+            "type": "list<Object>"
+        },
+        {
+            "name": "has_ownership_been_updated",
+            "type": "bool"
+        },
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "num_assets",
+            "type": "int"
+        },
+        {
+            "name": "receiving_rights_holder_owner",
+            "type": "Object"
+        },
+        {
+            "name": "sending_rights_holder_owner",
+            "type": "Object"
+        },
+        {
+            "name": "status",
+            "type": "string"
+        },
+        {
+            "name": "transfer_territories",
+            "type": "list<string>"
+        },
+        {
+            "name": "transfer_time",
+            "type": "datetime"
+        }
+    ]
+}

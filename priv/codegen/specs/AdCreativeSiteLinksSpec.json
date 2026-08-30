@@ -1,0 +1,69 @@
+{
+    "apis": [],
+    "fields": [
+        {
+            "name": "is_defaulting_eligible",
+            "type": "bool"
+        },
+        {
+            "name": "is_site_link_sticky",
+            "type": "bool"
+        },
+        {
+            "name": "site_link_classification",
+            "type": "string"
+        },
+        {
+            "name": "site_link_extra_metadata",
+            "type": "string"
+        },
+        {
+            "name": "site_link_hash",
+            "type": "string"
+        },
+        {
+            "name": "site_link_id",
+            "type": "string"
+        },
+        {
+            "name": "site_link_image_hash",
+            "type": "string"
+        },
+        {
+            "name": "site_link_image_url",
+            "type": "string"
+        },
+        {
+            "name": "site_link_language",
+            "type": "string"
+        },
+        {
+            "name": "site_link_original_url",
+            "type": "string"
+        },
+        {
+            "name": "site_link_recommendation_type",
+            "type": "string"
+        },
+        {
+            "name": "site_link_title",
+            "type": "string"
+        },
+        {
+            "name": "site_link_url",
+            "type": "string"
+        },
+        {
+            "name": "site_link_url_anchor",
+            "type": "string"
+        },
+        {
+            "name": "site_link_url_recommender_type",
+            "type": "string"
+        },
+        {
+            "name": "site_link_website_data_source",
+            "type": "string"
+        }
+    ]
+}

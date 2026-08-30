@@ -1,0 +1,65 @@
+{
+    "apis": [],
+    "fields": [
+        {
+            "name": "android_url",
+            "type": "string"
+        },
+        {
+            "name": "call_to_action",
+            "type": "AdCreativeLinkDataCallToAction"
+        },
+        {
+            "name": "caption",
+            "type": "string"
+        },
+        {
+            "name": "description",
+            "type": "string"
+        },
+        {
+            "name": "ig_media_id",
+            "type": "string"
+        },
+        {
+            "name": "image_crops",
+            "type": "AdsImageCrops"
+        },
+        {
+            "name": "image_hash",
+            "type": "string"
+        },
+        {
+            "name": "ios_url",
+            "type": "string"
+        },
+        {
+            "name": "link",
+            "type": "string"
+        },
+        {
+            "name": "marketing_message_buttons",
+            "type": "list<Object>"
+        },
+        {
+            "name": "name",
+            "type": "string"
+        },
+        {
+            "name": "picture",
+            "type": "string"
+        },
+        {
+            "name": "place_data",
+            "type": "AdCreativePlaceData"
+        },
+        {
+            "name": "static_card",
+            "type": "bool"
+        },
+        {
+            "name": "video_id",
+            "type": "string"
+        }
+    ]
+}

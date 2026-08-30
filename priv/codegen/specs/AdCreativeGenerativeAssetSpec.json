@@ -1,0 +1,9 @@
+{
+    "apis": [],
+    "fields": [
+        {
+            "name": "transparency_metadata",
+            "type": "Object"
+        }
+    ]
+}

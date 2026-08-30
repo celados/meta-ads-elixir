@@ -1,0 +1,25 @@
+{
+    "apis": [],
+    "fields": [
+        {
+            "name": "audio_enabled",
+            "type": "bool"
+        },
+        {
+            "name": "call_hours",
+            "type": "Object"
+        },
+        {
+            "name": "call_routing",
+            "type": "Object"
+        },
+        {
+            "name": "icon_enabled",
+            "type": "bool"
+        },
+        {
+            "name": "video_enabled",
+            "type": "bool"
+        }
+    ]
+}

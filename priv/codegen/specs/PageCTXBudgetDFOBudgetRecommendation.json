@@ -1,0 +1,69 @@
+{
+    "apis": [],
+    "fields": [
+        {
+            "name": "budget",
+            "type": "string"
+        },
+        {
+            "name": "budget_leads",
+            "type": "string"
+        },
+        {
+            "name": "budget_new_model",
+            "type": "string"
+        },
+        {
+            "name": "budget_purchases",
+            "type": "string"
+        },
+        {
+            "name": "budget_value",
+            "type": "string"
+        },
+        {
+            "name": "budget_without_threshold",
+            "type": "string"
+        },
+        {
+            "name": "reported_conversion",
+            "type": "string"
+        },
+        {
+            "name": "reported_conversion_leads",
+            "type": "string"
+        },
+        {
+            "name": "reported_conversion_purchases",
+            "type": "string"
+        },
+        {
+            "name": "reported_conversion_value",
+            "type": "string"
+        },
+        {
+            "name": "reported_conversions_new_model",
+            "type": "string"
+        },
+        {
+            "name": "reported_conversions_without_threshold",
+            "type": "string"
+        },
+        {
+            "name": "zo_budget",
+            "type": "string"
+        },
+        {
+            "name": "zo_budget_leads",
+            "type": "string"
+        },
+        {
+            "name": "zo_budget_purchases",
+            "type": "string"
+        },
+        {
+            "name": "zo_budget_value",
+            "type": "string"
+        }
+    ]
+}

@@ -1,0 +1,37 @@
+{
+    "apis": [],
+    "fields": [
+        {
+            "name": "bodies",
+            "type": "list<Object>"
+        },
+        {
+            "name": "descriptions",
+            "type": "list<Object>"
+        },
+        {
+            "name": "destinations",
+            "type": "list<Object>"
+        },
+        {
+            "name": "images",
+            "type": "list<Object>"
+        },
+        {
+            "name": "push_metadata_ids",
+            "type": "list<string>"
+        },
+        {
+            "name": "related_media",
+            "type": "Object"
+        },
+        {
+            "name": "titles",
+            "type": "list<Object>"
+        },
+        {
+            "name": "videos",
+            "type": "list<Object>"
+        }
+    ]
+}

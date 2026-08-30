@@ -1,0 +1,13 @@
+{
+    "apis": [],
+    "fields": [
+        {
+            "name": "decision_type",
+            "type": "string"
+        },
+        {
+            "name": "enrollment_status",
+            "type": "string"
+        }
+    ]
+}

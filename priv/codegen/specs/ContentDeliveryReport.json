@@ -1,0 +1,17 @@
+{
+    "apis": [],
+    "fields": [
+        {
+            "name": "content_id",
+            "type": "string"
+        },
+        {
+            "name": "creator_id",
+            "type": "string"
+        },
+        {
+            "name": "estimated_impressions",
+            "type": "unsigned int"
+        }
+    ]
+}

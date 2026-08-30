@@ -1,0 +1,13 @@
+{
+    "apis": [],
+    "fields": [
+        {
+            "name": "offer_id",
+            "type": "string"
+        },
+        {
+            "name": "offer_name",
+            "type": "string"
+        }
+    ]
+}

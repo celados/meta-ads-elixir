@@ -1,0 +1,17 @@
+{
+    "apis": [],
+    "fields": [
+        {
+            "name": "groups",
+            "type": "list<Object>"
+        },
+        {
+            "name": "origin",
+            "type": "string"
+        },
+        {
+            "name": "origins",
+            "type": "list<string>"
+        }
+    ]
+}

@@ -1,0 +1,45 @@
+{
+    "apis": [],
+    "fields": [
+        {
+            "name": "audio_availability_status",
+            "type": "string"
+        },
+        {
+            "name": "audio_library_policy",
+            "type": "list<map<string, list<map<string, Object>>>>"
+        },
+        {
+            "name": "canonical_reference_file",
+            "type": "AudioAsset"
+        },
+        {
+            "name": "creation_time",
+            "type": "datetime"
+        },
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "reference_file_isrcs",
+            "type": "list<string>"
+        },
+        {
+            "name": "reference_files",
+            "type": "list<Object>"
+        },
+        {
+            "name": "representative_reference_file",
+            "type": "AudioAsset"
+        },
+        {
+            "name": "title",
+            "type": "string"
+        },
+        {
+            "name": "update_time",
+            "type": "datetime"
+        }
+    ]
+}

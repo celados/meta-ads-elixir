@@ -1,0 +1,17 @@
+{
+    "apis": [],
+    "fields": [
+        {
+            "name": "capabilities",
+            "type": "Object"
+        },
+        {
+            "name": "pills",
+            "type": "list<Object>"
+        },
+        {
+            "name": "pills_mbs_version",
+            "type": "int"
+        }
+    ]
+}
