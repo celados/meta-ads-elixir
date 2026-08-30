@@ -26,6 +26,7 @@ defmodule Mix.Tasks.MetaAds.Generate do
     project_root = File.cwd!()
     specs_path = Path.expand(options[:specs] || @default_specs, project_root)
     output_path = Path.join(project_root, @output)
+    staging_path = output_path <> ".staging-#{System.unique_integer([:positive, :monotonic])}"
 
     unless File.exists?(Path.join(project_root, "mix.exs")) do
       Mix.raise("Run this task from the meta_ads project root")
@@ -48,47 +49,70 @@ defmodule Mix.Tasks.MetaAds.Generate do
     enum_types = load_enum_types(specs_path)
     model_files = Enum.reject(spec_files, &String.ends_with?(&1, "/enum_types.json"))
 
-    # The output is a derived, project-local directory; deleting it keeps stale
-    # modules from surviving a schema contraction.
-    File.rm_rf!(output_path)
-    File.mkdir_p!(output_path)
+    File.mkdir_p!(staging_path)
 
-    counts =
-      Enum.reduce(
-        model_files,
-        %{models: 0, operations: 0, skipped_dynamic: 0, skipped_file: 0},
-        fn path, counts ->
-          case JSON.decode(File.read!(path)) do
-            {:ok, %{} = spec} ->
-              stats = write_model!(output_path, path, spec, enum_types)
+    try do
+      counts = generate_models(model_files, staging_path, enum_types)
 
-              %{
-                counts
-                | models: counts.models + 1,
-                  operations: counts.operations + stats.operations,
-                  skipped_dynamic: counts.skipped_dynamic + stats.skipped_dynamic,
-                  skipped_file: counts.skipped_file + stats.skipped_file
-              }
+      staging_path
+      |> Path.join("**/*.ex")
+      |> Path.wildcard()
+      |> then(&Mix.Task.rerun("format", &1))
 
-            {:ok, other} ->
-              Mix.raise("Expected an object schema in #{path}, got: #{inspect(other)}")
+      replace_output!(staging_path, output_path)
 
-            {:error, reason} ->
-              Mix.raise("Invalid JSON in #{path}: #{inspect(reason)}")
-          end
-        end
+      Mix.shell().info(
+        "Generated #{counts.models} models and #{counts.operations} operations; " <>
+          "skipped #{counts.skipped_dynamic} dynamic endpoint(s) and " <>
+          "#{counts.skipped_file} multipart operation(s)"
       )
+    after
+      File.rm_rf!(staging_path)
+    end
+  end
 
-    Mix.shell().info(
-      "Generated #{counts.models} models and #{counts.operations} operations; " <>
-        "skipped #{counts.skipped_dynamic} dynamic endpoint(s) and " <>
-        "#{counts.skipped_file} multipart operation(s)"
+  defp generate_models(model_files, output_path, enum_types) do
+    Enum.reduce(
+      model_files,
+      %{models: 0, operations: 0, skipped_dynamic: 0, skipped_file: 0},
+      fn path, counts ->
+        case JSON.decode(File.read!(path)) do
+          {:ok, %{} = spec} ->
+            stats = write_model!(output_path, path, spec, enum_types)
+
+            %{
+              counts
+              | models: counts.models + 1,
+                operations: counts.operations + stats.operations,
+                skipped_dynamic: counts.skipped_dynamic + stats.skipped_dynamic,
+                skipped_file: counts.skipped_file + stats.skipped_file
+            }
+
+          {:ok, other} ->
+            Mix.raise("Expected an object schema in #{path}, got: #{inspect(other)}")
+
+          {:error, reason} ->
+            Mix.raise("Invalid JSON in #{path}: #{inspect(reason)}")
+        end
+      end
     )
+  end
 
-    output_path
-    |> Path.join("**/*.ex")
-    |> Path.wildcard()
-    |> then(&Mix.Task.rerun("format", &1))
+  defp replace_output!(staging_path, output_path) do
+    backup_path = output_path <> ".backup-#{System.unique_integer([:positive, :monotonic])}"
+
+    # A backup makes the two-rename swap recoverable if the second filesystem
+    # operation fails; generated source should never be left half-written.
+    if File.exists?(output_path), do: File.rename!(output_path, backup_path)
+
+    case File.rename(staging_path, output_path) do
+      :ok ->
+        File.rm_rf!(backup_path)
+
+      {:error, reason} ->
+        if File.exists?(backup_path), do: File.rename!(backup_path, output_path)
+        Mix.raise("Could not replace generated models: #{inspect(reason)}")
+    end
   end
 
   defp load_enum_types(specs_path) do
